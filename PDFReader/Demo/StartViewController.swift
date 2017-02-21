@@ -59,8 +59,9 @@ internal final class StartViewController: UIViewController {
     /// Add `thumbnailsEnabled:false` to `createNew` to not load the thumbnails in the controller.
     fileprivate func showDocument(_ document: PDFDocument) {
         let image = UIImage(named: "")
-        let controller = PDFViewController.createNew(with: document, title: "", actionButtonImage: image, actionStyle: .activitySheet)
-        // controller.scrollDirection = .vertical // use this to scroll from top to bottom instead of left to right
+        let controller = PDFViewController.createNew(with: document, title: "", actionButtonImage: image, actionStyle: .activitySheet, thumbnailsEnabled: false)
+        controller.scrollDirection = .vertical
+        controller.collectionView.isPagingEnabled = false
         navigationController?.pushViewController(controller, animated: true)
     }
 
